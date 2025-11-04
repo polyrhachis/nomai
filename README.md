@@ -4,6 +4,42 @@ A minimal deep learning framework built from scratch in JAX with Equinox, made f
 # Installation
 **pip install git+https://github.com/polyrhachis/nomai.git**
 
+
+# Quick Example
+```
+#the net (lazy init)
+net = nomai.Sequential(
+    layers=(
+        
+        nn.Linear(512),
+        nn.ReLU(),
+        nn.Linear(128),
+        nn.ReLU(),
+        nn.Linear(10)
+    )
+)
+
+batch_size = 32
+
+#data loaders
+train_loader = nomai.data_loaders.supervised_loader(x=X_train, y=y_train, batch_size=batch_size)
+test_loader = nomai.data_loaders.supervised_loader(x=X_test, y=y_test, batch_size=10000)
+
+#model
+model = nomai.structs.Supervised_Trainer(
+    net=net, optimizer=nomai.optimizers.RMSprop(lr=0.001, gamma=0.95), 
+    loss=nomai.losses.CrossEntropyLoss(), train_loader=train_loader, test_loader=test_loader,
+    eval_metric=nomai.metrics.Classification(), key=0
+    )
+dummy = jnp.ones((batch_size, 784),dtype=jnp.float32) 
+
+model = model.materialize(dummy=dummy, w_init=nomai.w_inits.He())
+
+#training
+model = model.train(epochs=10)
+```
+
+
 # What Is nomai?
 nomai is a deep learning library designed to have a simple and concise syntax while still respecting JAX constraints, allowing for a very fast, **fully jitted** training step with just a few lines of code, while remaining highly customizable when desired.
 
