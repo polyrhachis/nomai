@@ -60,3 +60,9 @@ The creation of nomai allowed me to familiarize myself with the world of **compi
 # Known Issues And Future Plans
 I am aware that the library has some issues, one of which is having to explicitly specify an identical eval function in the case of a custom forward function.
 Many fundamental layers and components are also missing, such as additional metrics (confusion matrix, f1, recall, etc.), fundamental layers (BatchNorm, Attention, GRU, LSMT, etc.), the Adam optimizer, and above all, other structures for unsupervised training or perhaps reinforcement learning. The library is still under development and I will introduce everything gradually.
+
+
+
+
+# Thanks For Reading!  
+If you have feedback, suggestions, or just want to share your thoughts, feel free to reach out at **polyrhachiss@gmail.com**
