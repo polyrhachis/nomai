@@ -6,7 +6,7 @@ A minimal deep learning framework built from scratch in JAX with Equinox, made f
 
 
 # Quick Example
-```
+```python
 #the net (lazy init)
 net = nomai.Sequential(
     layers=(
