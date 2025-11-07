@@ -417,3 +417,32 @@ class Softmax(eqx.Module):
 
     def eval(self, x):
         return self(x)    
+
+
+class MaxPooling2D(eqx.Module):
+
+    kernel_size : tuple = eqx.field(static=True)
+    stride : tuple = eqx.field(static=True)
+
+    def __init__(self, kernel_size, stride=None):
+        stride = kernel_size if not stride else stride
+        self.kernel_size = kernel_size
+        self.stride = stride
+
+    def materialize(self, dummy, w_init, key):
+        new_layer = MaxPooling2D(kernel_size=self.kernel_size, stride=self.stride)
+        return new_layer, new_layer(dummy), key
+    
+    def __call__(self, x):
+        return lax.reduce_window(
+        x, -jnp.inf, lax.max ,
+        window_dimensions=(1,1, *self.kernel_size,),
+        window_strides=(1,1, *self.stride), padding="SAME"
+        )
+
+    def eval(self, x):
+        return self(x)    
+
+
+
+
