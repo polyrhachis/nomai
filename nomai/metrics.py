@@ -15,7 +15,8 @@ class Classification:
     """    
 
     def __call__(self, preds, y):
-        total_preds = len(y)
+        total_preds = len(preds)
+        y = y[:total_preds]
         preds = jnp.argmax(preds, axis=-1)
         preds = jnp.sum(preds==y)
 
