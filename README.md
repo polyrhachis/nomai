@@ -1,2 +1,46 @@
-# macrograd
-A lightweight autograd engine inspired by PyTorch.
+# ⚡Macrograd
+Macrograd is a small framework inspired by micrograd (by Andrej Karpathy), but designed to work with tensors instead of scalar values (with NumPy and even CuPy). Its main purpose is educational—although it’s surprisingly fast.
+I wanted to truly understand how PyTorch works under the hood, so I built my own mini PyTorch implementation.
+# Installation
+```bash
+pip install git+https://github.com/polyrhachis/macrograd.git
+```
+# Example usage
+```python
+import macrograd as mg
+import numpy as np
+
+# Create input and weight tensors
+x = mg.Tensor(np.random.normal(size=(10, 10)))
+w = mg.Tensor(np.random.normal(size=(10, 10)))
+
+# Forward pass: matrix multiplication + ReLU
+z = mg.Functional.ReLU(x @ w)
+
+# Backward pass: compute gradients
+z.backward()
+
+# Access gradients
+print("Gradient of x:", x.grad)
+print("Gradient of w:", w.grad)
+
+```
+(for more examples, see the examples folder, there is a full MLP trained on the MNIST dataset)
+# 🔥 Features
+✅ Automatic differentiation for Tensor operations  
+
+✅ Common functions like ReLU, Softmax, etc.
+
+✅ A `nn` module for PyTorch-like training 
+
+✅ Simple and readable code, implemented in a very explicit way
+
+ # ⚠️ Still work in progress
+
+ ❌ CuPy integration
+
+ ❌ Convolutions
+
+ ❌ Self-Attention
+
+ ❌ Other optimizers
