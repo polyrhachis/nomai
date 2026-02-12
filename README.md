@@ -44,3 +44,5 @@ print("Gradient of w:", w.grad)
  ❌ Self-Attention
 
  ❌ Other optimizers
+ 
+For any questions or feedback, feel free to reach out at: **polyrhachiss@gmail.com**
