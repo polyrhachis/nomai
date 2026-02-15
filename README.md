@@ -35,14 +35,16 @@ print("Gradient of w:", w.grad)
 
 ✅ Simple and readable code, implemented in a very explicit way
 
+✅ CuPy integration
+
+✅ Self-Attention
+
  # ⚠️ Still work in progress
 
- ❌ CuPy integration
-
- ❌ Convolutions
-
- ❌ Self-Attention
-
+ ❌ performance issues
+ 
+ ❌ Out of memory bugs
+ 
  ❌ Other optimizers
  
 For any questions or feedback, feel free to reach out at: **polyrhachiss@gmail.com**
