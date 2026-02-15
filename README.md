@@ -1,21 +1,21 @@
-# ⚡Macrograd
-Macrograd is a small framework inspired by micrograd (by Andrej Karpathy), but designed to work with tensors instead of scalar values (with NumPy and even CuPy). Its main purpose is educational—although it’s surprisingly fast.
+# ⚡Nomai
+Nomai is a small framework inspired by micrograd (by Andrej Karpathy), but designed to work with tensors instead of scalar values (with NumPy and even CuPy). Its main purpose is educational—although it’s surprisingly fast.
 I wanted to truly understand how PyTorch works under the hood, so I built my own mini PyTorch implementation.
 # Installation
 ```bash
-pip install git+https://github.com/polyrhachis/macrograd.git
+pip install git+https://github.com/polyrhachis/nomai.git
 ```
 # Example usage
 ```python
-import macrograd as mg
+import nomai as nm
 import numpy as np
 
 # Create input and weight tensors
-x = mg.Tensor(np.random.normal(size=(10, 10)))
-w = mg.Tensor(np.random.normal(size=(10, 10)))
+x = nm.Tensor(np.random.normal(size=(10, 10)))
+w = nm.Tensor(np.random.normal(size=(10, 10)))
 
 # Forward pass: matrix multiplication + ReLU
-z = mg.Functional.ReLU(x @ w)
+z = nm.Functional.ReLU(x @ w)
 
 # Backward pass: compute gradients
 z.backward()
